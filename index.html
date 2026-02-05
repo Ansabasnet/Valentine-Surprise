@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine 💖</title>
+
+<style>
+body{
+ font-family: Arial, sans-serif;
+ text-align:center;
+ background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+ margin:0;
+ overflow-x:hidden;
+}
+
+.container{
+ padding:20px;
+ margin-top:40px;
+}
+
+h1{
+ color:#ff2e88;
+ font-size:2.2rem;
+}
+
+p{
+ font-size:1.2rem;
+ color:#444;
+}
+
+img{
+ max-width:260px;
+ border-radius:20px;
+ margin-top:20px;
+ box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+button{
+ padding:12px 20px;
+ font-size:18px;
+ border:none;
+ border-radius:12px;
+ margin:15px;
+ cursor:pointer;
+}
+
+#yesBtn{
+ background:#ff2e88;
+ color:white;
+}
+
+#noBtn{
+ background:#555;
+ color:white;
+ position:relative;
+}
+
+#result{
+ font-size:1.5rem;
+ color:#ff2e88;
+ margin-top:20px;
+}
+
+.heart{
+ position:fixed;
+ bottom:-20px;
+ animation:floatUp 6s linear infinite;
+}
+
+.slideshow {
+  position: relative;
+  width: 300px;
+}
+
+.slide {
+  width: 100%;
+  display: none;
+}
+
+
+@keyframes floatUp{
+ from{transform:translateY(0);opacity:1;}
+ to{transform:translateY(-800px);opacity:0;}
+}
+</style>
+</head>
+
+<script>
+let index = 0;
+showSlides();
+
+function showSlides() {
+  let slides = document.getElementsByClassName("slide");
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  index++;
+  if (index > slides.length) { index = 1; }
+
+  slides[index - 1].style.display = "block";
+
+  setTimeout(showSlides, 2000);
+}
+</script>
+
+
+<body>
+
+<div class="container">
+
+<h1>Will You Be My Valentine💖 ?</h1>
+
+<p>
+Even though miles keep us apart 🌍  
+you are always close to my heart ❤️  
+and I can't wait to be with you again soon !
+</p>
+
+<div class="slideshow">
+  <img class="slide" src="photo.JPG">
+  <img class="slide" src="sign.JPG">
+  <img class="slide" src="last.JPG">
+</div>
+
+
+<br>
+
+<button id="yesBtn" onclick="sayYes()">Yes 💘</button>
+<button id="noBtn" onmouseover="moveBtn()">No 😆</button>
+
+<div id="result"></div>
+
+</div>
+
+<audio id="music">
+ <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function sayYes(){
+ document.getElementById("result").innerHTML =
+ "YAYYY 😭💖 You just made my heart explode with love! I love you forever & I miss you every single day my dear Husband (Mr. Adhikari)!✨";
+ document.getElementById("music").play();
+ startHearts();
+}
+
+function moveBtn(){
+ let btn=document.getElementById("noBtn");
+ btn.style.position="absolute";
+ btn.style.left=Math.random()*80+"%";
+ btn.style.top=Math.random()*80+"%";
+}
+
+function startHearts(){
+ setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(20+Math.random()*30)+"px";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),6000);
+ },300);
+}
+</script>
+
+</body>
+</html>
